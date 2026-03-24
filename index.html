@@ -3,11 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SISTEMA ARCHIVIO LOCALE</title>
+    <title>ARCHIVIO LOCALE PRO</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-
     <nav class="top-nav">
         <button id="btn-reg" class="nav-btn active" onclick="mostraPagina('registrazione')">REGISTRAZIONE</button>
         <button id="btn-arc" class="nav-btn" onclick="mostraPagina('archivio')">ARCHIVIO TOTALE</button>
@@ -15,19 +14,15 @@
 
     <div id="page-registrazione" class="page-content">
         <div class="form-container">
-            <h1 class="title">NEW INDEX CARD</h1>
+            <h1 id="form-title" class="title">NEW INDEX CARD</h1>
+            <input type="hidden" id="editMode" value="false">
             
             <div class="form-grid">
                 <div class="form-group"><label>ID NUMBER</label><input type="text" id="idNumber"></div>
                 <div class="form-group"><label>TAR NO.</label><input type="text" id="tarNo"></div>
                 <div class="form-group"><label>201 NO.</label><input type="text" id="no201"></div>
-                <div class="form-group">
-                    <label>ORGANIZATION</label>
-                    <select id="organization">
-                        <option value="KADIWA">KADIWA</option>
-                        <option value="BUKLOD">BUKLOD</option>
-                        <option value="BINHI">BINHI</option>
-                    </select>
+                <div class="form-group"><label>ORGANIZATION</label>
+                    <select id="organization"><option value="KADIWA">KADIWA</option><option value="BUKLOD">BUKLOD</option><option value="BINHI">BINHI</option></select>
                 </div>
             </div>
 
@@ -39,35 +34,20 @@
             </div>
 
             <div class="form-grid">
-                <div class="form-group"><label>DATE OF BIRTH</label><input type="date" id="dob"></div>
+                <div class="form-group"><label>BIRTH DATE</label><input type="date" id="dob"></div>
                 <div class="form-group"><label>PLACE OF BIRTH</label><input type="text" id="pob"></div>
-                <div class="form-group">
-                    <label>SEX</label>
-                    <select id="sex">
-                        <option value="M">M</option>
-                        <option value="F">F</option>
-                    </select>
-                </div>
+                <div class="form-group"><label>SEX</label><select id="sex"><option value="M">M</option><option value="F">F</option></select></div>
             </div>
 
             <div class="form-grid">
-                <div class="form-group">
-                    <label>CIVIL STATUS</label>
-                    <select id="civilStatus">
-                        <option value="SINGLE">SINGLE</option>
-                        <option value="MARRIED">MARRIED</option>
-                        <option value="WIDOWED">WIDOWED</option>
-                    </select>
-                </div>
+                <div class="form-group"><label>CIVIL STATUS</label><select id="civilStatus"><option value="SINGLE">SINGLE</option><option value="MARRIED">MARRIED</option><option value="WIDOWED">WIDOWED</option></select></div>
                 <div class="form-group"><label>MARRIAGE DATE</label><input type="date" id="marriageDate"></div>
                 <div class="form-group"><label>CITIZENSHIP</label><input type="text" id="citizenship"></div>
             </div>
 
             <div class="form-group"><label>OCCUPATION</label><input type="text" id="occupation"></div>
-            <div class="form-group"><label>TELEPHONE NO.</label><input type="text" id="telNo"></div>
-            <div class="form-group"><label>RELIGION</label><input type="text" id="religion"></div>
-            <div class="form-group"><label>FULL ADDRESS</label><input type="text" id="address"></div>
-
+            <div class="form-group"><label>ADDRESS</label><input type="text" id="address"></div>
+            
             <div class="form-grid">
                 <div class="form-group"><label>CITY</label><input type="text" id="city"></div>
                 <div class="form-group"><label>PROVINCE</label><input type="text" id="province"></div>
@@ -75,47 +55,31 @@
 
             <div class="form-grid">
                 <div class="form-group"><label>FATHER'S NAME</label><input type="text" id="fatherName"></div>
-                <div class="form-group"><label>MOTHER'S MAIDEN NAME</label><input type="text" id="motherName"></div>
+                <div class="form-group"><label>MOTHER'S NAME</label><input type="text" id="motherName"></div>
             </div>
 
-            <div class="form-group"><label>INDOCTRINATED BY</label><input type="text" id="indoctrinatedBy"></div>
-            
             <div class="form-grid">
-                <div class="form-group"><label>BAPTISM PLACE</label><input type="text" id="baptismPlace"></div>
                 <div class="form-group"><label>BAPTISM DATE</label><input type="date" id="baptismDate"></div>
+                <div class="form-group"><label>BAPTISM PLACE</label><input type="text" id="baptismPlace"></div>
             </div>
 
-            <div class="form-group">
-                <label>STATUS</label>
-                <select id="status">
-                    <option value="IN">IN</option>
-                    <option value="OUT">OUT</option>
-                </select>
-            </div>
+            <div class="form-group"><label>STATUS</label><select id="status"><option value="IN">IN</option><option value="OUT">OUT</option></select></div>
 
-            <button class="save-btn" id="btnSave" onclick="salvaPersona()">🚀 REGISTER TO CLOUD DATABASE</button>
+            <button class="save-btn" id="btnSave" onclick="salvaPersona()">🚀 REGISTER TO CLOUD</button>
+            <button id="btnCancelEdit" style="display:none; margin-top:10px; background:#666; color:white; width:100%; padding:10px; border:none;" onclick="cancelEdit()">CANCEL EDIT</button>
         </div>
     </div>
 
     <div id="page-archivio" class="page-content" style="display:none">
         <div class="search-bar">
-            <input type="text" id="searchBox" placeholder="Cerca per Nome, Cognome o ID..." onkeyup="filtraCards()">
+            <input type="text" id="searchBox" placeholder="Cerca (Surname, Husband, ID, Org...)" onkeyup="filtraCards()">
         </div>
-        
-        <div id="loading-spinner" class="spinner" style="display:none">CARICAMENTO DATABASE...</div>
-
+        <div id="loading-spinner" class="spinner" style="display:none">SYNCING WITH CLOUD...</div>
         <div class="archive-split">
-            <div class="archive-column">
-                <h2 class="col-title">MEMBERS (IN)</h2>
-                <div id="list-in"></div>
-            </div>
-            <div class="archive-column">
-                <h2 class="col-title">MEMBERS (OUT)</h2>
-                <div id="list-out"></div>
-            </div>
+            <div class="archive-column"><h2 class="col-title">MEMBERS (IN)</h2><div id="list-in"></div></div>
+            <div class="archive-column"><h2 class="col-title">MEMBERS (OUT)</h2><div id="list-out"></div></div>
         </div>
     </div>
-
     <script src="script.js"></script>
 </body>
 </html>
