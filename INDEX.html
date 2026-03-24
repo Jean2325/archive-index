@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Digital Index Card - Cloud Archive</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <nav class="navbar">
+        <div class="nav-container">
+            <button onclick="mostraPagina('registrazione')" id="btn-reg" class="nav-btn active">✍️ REGISTRATION</button>
+            <button onclick="mostraPagina('archivio')" id="btn-arc" class="nav-btn">🗂️ CLOUD ARCHIVE</button>
+            <span id="cloud-indicator">● Cloud Sync Active</span>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div id="page-registrazione" class="page-content">
+            <h2 class="form-title">MEMBER DATA ENTRY SHEET</h2>
+            <div class="form-grid" id="main-form">
+                <div class="field"><label>ID NUMBER</label><input type="text" id="idNumber"></div>
+                <div class="field"><label>TAR NO.</label><input type="text" id="tarNo"></div>
+                <div class="field"><label>201 NO.</label><input type="text" id="no201"></div>
+                <div class="field">
+                    <label>ORGANIZATION</label>
+                    <select id="organization">
+                        <option value="BUKLOD">BUKLOD</option>
+                        <option value="KADIWA">KADIWA</option>
+                        <option value="BINHI">BINHI</option>
+                    </select>
+                </div>
+                <div class="field">
+                    <label>SECTION STATUS</label>
+                    <select id="status"><option value="IN">IN</option><option value="OUT">OUT</option></select>
+                </div>
+
+                <div class="field"><label>HUSBAND SURNAME</label><input type="text" id="husbandSurname"></div>
+                <div class="field"><label>SURNAME</label><input type="text" id="surname"></div>
+                <div class="field"><label>FIRST NAME</label><input type="text" id="firstName"></div>
+                <div class="field"><label>MIDDLE NAME</label><input type="text" id="middleName"></div>
+
+                <div class="field"><label>DATE OF BIRTH</label><input type="date" id="dob"></div>
+                <div class="field"><label>PLACE OF BIRTH</label><input type="text" id="pob"></div>
+                <div class="field"><label>CITY/TOWN</label><input type="text" id="city"></div>
+                <div class="field"><label>PROVINCE</label><input type="text" id="province"></div>
+
+                <div class="field">
+                    <label>SEX</label>
+                    <select id="sex"><option value="MALE">MALE</option><option value="FEMALE">FEMALE</option></select>
+                </div>
+                <div class="field"><label>DATE OF MARRIAGE</label><input type="date" id="marriageDate"></div>
+                <div class="field"><label>CIVIL STATUS</label><input type="text" id="civilStatus"></div>
+                <div class="field"><label>CITIZENSHIP</label><input type="text" id="citizenship"></div>
+
+                <div class="field"><label>OCCUPATION</label><input type="text" id="occupation"></div>
+                <div class="field"><label>TEL. NO.</label><input type="text" id="telNo"></div>
+                <div class="field">
+                    <label>RELIGION</label>
+                    <select id="religion"><option value="INC">INC</option><option value="CATHOLIC">CATHOLIC</option><option value="OTHER">OTHER</option></select>
+                </div>
+                <div class="field full"><label>FULL ADDRESS</label><input type="text" id="address"></div>
+
+                <div class="field"><label>FATHER'S NAME</label><input type="text" id="fatherName"></div>
+                <div class="field"><label>MOTHER'S NAME</label><input type="text" id="motherName"></div>
+                <div class="field"><label>INDOCTRINATED BY</label><input type="text" id="indoctrinatedBy"></div>
+                <div class="field"><label>BAPTISM PLACE</label><input type="text" id="baptismPlace"></div>
+                <div class="field"><label>BAPTISM DATE</label><input type="date" id="baptismDate"></div>
+
+                <button class="btn-save" id="btnSave" onclick="salvaPersona()">🚀 REGISTER TO CLOUD DATABASE</button>
+            </div>
+        </div>
+
+        <div id="page-archivio" class="page-content" style="display: none;">
+            <div class="search-bar-container">
+                <input type="text" id="searchBox" onkeyup="filtraCards()" placeholder="🔍 Search by Name, ID, TAR or 201...">
+            </div>
+            <div id="loading-spinner" style="display:none;">⌛ Synchronizing with Google Sheets...</div>
+            
+            <div class="split-view">
+                <div class="archive-column">
+                    <div class="col-header header-in">IN SECTION</div>
+                    <div id="list-in" class="cards-container"></div>
+                </div>
+                <div class="archive-column">
+                    <div class="col-header header-out">OUT SECTION</div>
+                    <div id="list-out" class="cards-container"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
