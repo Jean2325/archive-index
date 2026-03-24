@@ -1,92 +1,117 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="it">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Digital Index Card - Cloud Archive</title>
+    <title>SISTEMA ARCHIVIO LOCALE</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <nav class="navbar">
-        <div class="nav-container">
-            <button onclick="mostraPagina('registrazione')" id="btn-reg" class="nav-btn active">✍️ REGISTRATION</button>
-            <button onclick="mostraPagina('archivio')" id="btn-arc" class="nav-btn">🗂️ CLOUD ARCHIVE</button>
-            <span id="cloud-indicator">● Cloud Sync Active</span>
-        </div>
+    <nav class="top-nav">
+        <button id="btn-reg" class="nav-btn active" onclick="mostraPagina('registrazione')">REGISTRAZIONE</button>
+        <button id="btn-arc" class="nav-btn" onclick="mostraPagina('archivio')">ARCHIVIO TOTALE</button>
     </nav>
 
-    <div class="container">
-        <div id="page-registrazione" class="page-content">
-            <h2 class="form-title">MEMBER DATA ENTRY SHEET</h2>
-            <div class="form-grid" id="main-form">
-                <div class="field"><label>ID NUMBER</label><input type="text" id="idNumber"></div>
-                <div class="field"><label>TAR NO.</label><input type="text" id="tarNo"></div>
-                <div class="field"><label>201 NO.</label><input type="text" id="no201"></div>
-                <div class="field">
+    <div id="page-registrazione" class="page-content">
+        <div class="form-container">
+            <h1 class="title">NEW INDEX CARD</h1>
+            
+            <div class="form-grid">
+                <div class="form-group"><label>ID NUMBER</label><input type="text" id="idNumber"></div>
+                <div class="form-group"><label>TAR NO.</label><input type="text" id="tarNo"></div>
+                <div class="form-group"><label>201 NO.</label><input type="text" id="no201"></div>
+                <div class="form-group">
                     <label>ORGANIZATION</label>
                     <select id="organization">
-                        <option value="BUKLOD">BUKLOD</option>
                         <option value="KADIWA">KADIWA</option>
+                        <option value="BUKLOD">BUKLOD</option>
                         <option value="BINHI">BINHI</option>
                     </select>
                 </div>
-                <div class="field">
-                    <label>SECTION STATUS</label>
-                    <select id="status"><option value="IN">IN</option><option value="OUT">OUT</option></select>
-                </div>
+            </div>
 
-                <div class="field"><label>HUSBAND SURNAME</label><input type="text" id="husbandSurname"></div>
-                <div class="field"><label>SURNAME</label><input type="text" id="surname"></div>
-                <div class="field"><label>FIRST NAME</label><input type="text" id="firstName"></div>
-                <div class="field"><label>MIDDLE NAME</label><input type="text" id="middleName"></div>
+            <div class="form-grid">
+                <div class="form-group"><label>HUSBAND SURNAME</label><input type="text" id="husbandSurname"></div>
+                <div class="form-group"><label>SURNAME</label><input type="text" id="surname"></div>
+                <div class="form-group"><label>FIRST NAME</label><input type="text" id="firstName"></div>
+                <div class="form-group"><label>MIDDLE NAME</label><input type="text" id="middleName"></div>
+            </div>
 
-                <div class="field"><label>DATE OF BIRTH</label><input type="date" id="dob"></div>
-                <div class="field"><label>PLACE OF BIRTH</label><input type="text" id="pob"></div>
-                <div class="field"><label>CITY/TOWN</label><input type="text" id="city"></div>
-                <div class="field"><label>PROVINCE</label><input type="text" id="province"></div>
-
-                <div class="field">
+            <div class="form-grid">
+                <div class="form-group"><label>DATE OF BIRTH</label><input type="date" id="dob"></div>
+                <div class="form-group"><label>PLACE OF BIRTH</label><input type="text" id="pob"></div>
+                <div class="form-group">
                     <label>SEX</label>
-                    <select id="sex"><option value="MALE">MALE</option><option value="FEMALE">FEMALE</option></select>
+                    <select id="sex">
+                        <option value="M">M</option>
+                        <option value="F">F</option>
+                    </select>
                 </div>
-                <div class="field"><label>DATE OF MARRIAGE</label><input type="date" id="marriageDate"></div>
-                <div class="field"><label>CIVIL STATUS</label><input type="text" id="civilStatus"></div>
-                <div class="field"><label>CITIZENSHIP</label><input type="text" id="citizenship"></div>
+            </div>
 
-                <div class="field"><label>OCCUPATION</label><input type="text" id="occupation"></div>
-                <div class="field"><label>TEL. NO.</label><input type="text" id="telNo"></div>
-                <div class="field">
-                    <label>RELIGION</label>
-                    <select id="religion"><option value="INC">INC</option><option value="CATHOLIC">CATHOLIC</option><option value="OTHER">OTHER</option></select>
+            <div class="form-grid">
+                <div class="form-group">
+                    <label>CIVIL STATUS</label>
+                    <select id="civilStatus">
+                        <option value="SINGLE">SINGLE</option>
+                        <option value="MARRIED">MARRIED</option>
+                        <option value="WIDOWED">WIDOWED</option>
+                    </select>
                 </div>
-                <div class="field full"><label>FULL ADDRESS</label><input type="text" id="address"></div>
-
-                <div class="field"><label>FATHER'S NAME</label><input type="text" id="fatherName"></div>
-                <div class="field"><label>MOTHER'S NAME</label><input type="text" id="motherName"></div>
-                <div class="field"><label>INDOCTRINATED BY</label><input type="text" id="indoctrinatedBy"></div>
-                <div class="field"><label>BAPTISM PLACE</label><input type="text" id="baptismPlace"></div>
-                <div class="field"><label>BAPTISM DATE</label><input type="date" id="baptismDate"></div>
-
-                <button class="btn-save" id="btnSave" onclick="salvaPersona()">🚀 REGISTER TO CLOUD DATABASE</button>
+                <div class="form-group"><label>MARRIAGE DATE</label><input type="date" id="marriageDate"></div>
+                <div class="form-group"><label>CITIZENSHIP</label><input type="text" id="citizenship"></div>
             </div>
-        </div>
 
-        <div id="page-archivio" class="page-content" style="display: none;">
-            <div class="search-bar-container">
-                <input type="text" id="searchBox" onkeyup="filtraCards()" placeholder="🔍 Search by Name, ID, TAR or 201...">
+            <div class="form-group"><label>OCCUPATION</label><input type="text" id="occupation"></div>
+            <div class="form-group"><label>TELEPHONE NO.</label><input type="text" id="telNo"></div>
+            <div class="form-group"><label>RELIGION</label><input type="text" id="religion"></div>
+            <div class="form-group"><label>FULL ADDRESS</label><input type="text" id="address"></div>
+
+            <div class="form-grid">
+                <div class="form-group"><label>CITY</label><input type="text" id="city"></div>
+                <div class="form-group"><label>PROVINCE</label><input type="text" id="province"></div>
             </div>
-            <div id="loading-spinner" style="display:none;">⌛ Synchronizing with Google Sheets...</div>
+
+            <div class="form-grid">
+                <div class="form-group"><label>FATHER'S NAME</label><input type="text" id="fatherName"></div>
+                <div class="form-group"><label>MOTHER'S MAIDEN NAME</label><input type="text" id="motherName"></div>
+            </div>
+
+            <div class="form-group"><label>INDOCTRINATED BY</label><input type="text" id="indoctrinatedBy"></div>
             
-            <div class="split-view">
-                <div class="archive-column">
-                    <div class="col-header header-in">IN SECTION</div>
-                    <div id="list-in" class="cards-container"></div>
-                </div>
-                <div class="archive-column">
-                    <div class="col-header header-out">OUT SECTION</div>
-                    <div id="list-out" class="cards-container"></div>
-                </div>
+            <div class="form-grid">
+                <div class="form-group"><label>BAPTISM PLACE</label><input type="text" id="baptismPlace"></div>
+                <div class="form-group"><label>BAPTISM DATE</label><input type="date" id="baptismDate"></div>
+            </div>
+
+            <div class="form-group">
+                <label>STATUS</label>
+                <select id="status">
+                    <option value="IN">IN</option>
+                    <option value="OUT">OUT</option>
+                </select>
+            </div>
+
+            <button class="save-btn" id="btnSave" onclick="salvaPersona()">🚀 REGISTER TO CLOUD DATABASE</button>
+        </div>
+    </div>
+
+    <div id="page-archivio" class="page-content" style="display:none">
+        <div class="search-bar">
+            <input type="text" id="searchBox" placeholder="Cerca per Nome, Cognome o ID..." onkeyup="filtraCards()">
+        </div>
+        
+        <div id="loading-spinner" class="spinner" style="display:none">CARICAMENTO DATABASE...</div>
+
+        <div class="archive-split">
+            <div class="archive-column">
+                <h2 class="col-title">MEMBERS (IN)</h2>
+                <div id="list-in"></div>
+            </div>
+            <div class="archive-column">
+                <h2 class="col-title">MEMBERS (OUT)</h2>
+                <div id="list-out"></div>
             </div>
         </div>
     </div>
