@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SISTEMA ARCHIVIO LOCALE - FULL DATA</title>
+    <title>SISTEMA ARCHIVIO LOCALE - V3 FINAL</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -36,7 +36,9 @@
             <div class="form-grid">
                 <div class="form-group"><label>DATE OF BIRTH</label><input type="date" id="dob"></div>
                 <div class="form-group"><label>PLACE OF BIRTH</label><input type="text" id="pob"></div>
-                <div class="form-group"><label>SEX</label><select id="sex"><option value="M">M</option><option value="F">F</option></select></div>
+                <div class="form-group"><label>SEX</label>
+                    <select id="sex"><option value="MALE">MALE</option><option value="FEMALE">FEMALE</option></select>
+                </div>
             </div>
 
             <div class="form-grid">
@@ -47,7 +49,13 @@
 
             <div class="form-group"><label>OCCUPATION</label><input type="text" id="occupation"></div>
             <div class="form-group"><label>TELEPHONE NO.</label><input type="text" id="telNo"></div>
-            <div class="form-group"><label>RELIGION</label><input type="text" id="religion"></div>
+            <div class="form-group"><label>RELIGION</label>
+                <select id="religion">
+                    <option value="INC">INC</option>
+                    <option value="CATHOLIC">CATHOLIC</option>
+                    <option value="OTHER">OTHER</option>
+                </select>
+            </div>
             <div class="form-group"><label>FULL ADDRESS</label><input type="text" id="address"></div>
 
             <div class="form-grid">
@@ -57,7 +65,7 @@
 
             <div class="form-grid">
                 <div class="form-group"><label>FATHER'S NAME</label><input type="text" id="fatherName"></div>
-                <div class="form-group"><label>MOTHER'S NAME</label><input type="text" id="motherName"></div>
+                <div class="form-group"><label>MOTHER'S MAIDEN NAME</label><input type="text" id="motherName"></div>
             </div>
 
             <div class="form-group"><label>INDOCTRINATED BY</label><input type="text" id="indoctrinatedBy"></div>
@@ -70,7 +78,7 @@
             <div class="form-group"><label>STATUS</label><select id="status"><option value="IN">IN</option><option value="OUT">OUT</option></select></div>
 
             <button class="save-btn" id="btnSave" onclick="salvaPersona()">🚀 REGISTER TO CLOUD</button>
-            <button id="btnCancelEdit" style="display:none; margin-top:10px; background:#444; color:white; width:100%; padding:10px; border:none; cursor:pointer;" onclick="cancelEdit()">CANCEL EDIT</button>
+            <button id="btnCancelEdit" style="display:none; margin-top:10px; background:#444; color:white; width:100%; padding:10px; border:none; cursor:pointer;" onclick="cancelEdit()">CANCEL EDIT (NO CHANGES)</button>
         </div>
     </div>
 

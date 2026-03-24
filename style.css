@@ -22,9 +22,9 @@ input, select { background: #333; border: 1px solid #444; color: white; padding:
 .card-header-main { background: #000; color: #f1c40f; padding: 6px 10px; font-size: 10px; font-weight: bold; display: flex; justify-content: space-between; margin-bottom: 10px; }
 .card-section-title { font-size: 9px; background: #f0f0f0; color: #555; padding: 3px 6px; margin: 10px 0 5px 0; font-weight: bold; border-left: 3px solid #f1c40f; }
 .card-row { display: flex; gap: 10px; border-bottom: 1px solid #f5f5f5; padding: 4px 0; }
-.card-cell { flex: 1; }
+.card-cell { flex: 1; overflow: hidden; }
 .card-cell label { font-size: 8px; color: #999; display: block; text-transform: uppercase; }
-.card-cell .val { font-size: 10.5px; font-weight: bold; line-height: 1.2; }
+.card-cell .val { font-size: 10.5px; font-weight: bold; line-height: 1.2; word-wrap: break-word; }
 
 .card-actions { display: flex; gap: 5px; margin-top: 12px; padding-top: 10px; border-top: 1px dashed #ccc; }
 .btn-action { flex: 1; padding: 8px; font-size: 9px; border: none; cursor: pointer; font-weight: bold; color: white; text-transform: uppercase; }
